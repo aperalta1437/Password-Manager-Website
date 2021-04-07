@@ -12,4 +12,8 @@ def index():
 def createAccount():
         userName=request.userName
         hashedPassword=hashlib.md5((request.password).encode())
-        createAccount(userName,hashedPassword)
+        createAccountResult=createAccount(userName,hashedPassword)
+        if(createAccountResult.Success==true)
+                return True
+        else
+                return False
