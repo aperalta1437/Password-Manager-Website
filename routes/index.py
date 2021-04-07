@@ -13,7 +13,7 @@ def createAccount():
         userName=request.userName
         hashedPassword=hashlib.md5((request.password).encode())
         createAccountResult=createAccount(userName,hashedPassword)
-        if(createAccountResult.Success==true)
+        if createAccountResult.Success==true:
                 return True
-        else
+        else:
                 return False

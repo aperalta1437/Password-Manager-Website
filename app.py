@@ -6,8 +6,13 @@ app.config["DEBUG"]= True
 
 @app.route('/', methods=['GET'])
 def index():
-        res= requests.get("localhost:somePort")
+        res= requests.get("localhost:somePort/")
         return send_file(res.text)
+
+@app.route('/createAccount', methods=['POST'])
+def createAccount():
+        res= requests.get("localhost:somePort/createAccount")
+        return (res)
 
 #error handling
 #error requesting a nonexistant page
