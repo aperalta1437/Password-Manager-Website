@@ -8,3 +8,14 @@ app.config["DEBUG"]= True
 def index():
         res= requests.get("localhost:somePort")
         return send_file(res.text)
+
+#error handling
+#error requesting a nonexistant page
+@app.errorhandler(404)
+def page_not_found(e):
+    return "exception", 404
+
+#error for general exception
+@app.errorhandler(Exception)
+def server_error(err):    
+    return "exception", 500
