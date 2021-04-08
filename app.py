@@ -24,3 +24,7 @@ def page_not_found(e):
 @app.errorhandler(Exception)
 def server_error(err):    
     return "exception", 500
+
+#Run app on port 5000
+if __name__ == "__main__":
+    app.run(port=5000)
