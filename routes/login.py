@@ -1,5 +1,6 @@
 from flask import Flask, send_file
 import hashlib
+import os
 #import helper functions
 import sys
 sys.path.append("./loginHelperFunctions")
@@ -17,8 +18,8 @@ def index():
 @app.route('/login',methods=['GET'])
 def login():
         userName=request.form.get('userName')
-        hashedPassword=hashlib.sha256((request.form.get('password')).encode())
-        loginResult=login(userName,hashedPassword)
+        password=request.form.get('password')        
+        loginResult=login(userName,password)
         if loginResult.Success == True:
             #generate token
             #return createAccountResult+{"accesstoken":token}
@@ -27,4 +28,4 @@ def login():
             return False
 
 if __name__ == "__main__":
-    app.run(port=5001)
+    app.run(port=5002)
