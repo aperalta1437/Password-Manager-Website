@@ -14,7 +14,7 @@ def login_helper_funtion (userName,hashedPassword):
                 dklen=128               
                )
                if(dataBaseObject.password==hashedPassword):
-                  return json.dumps({"Success":True,"Message":"User has been created"})      
+                  return json.dumps({"Success":True,"Message":"User has been logged inr"})      
                else:  
                   return json.dumps({"Success":False,"Message":"Incorrect Username or Password"})
          else:
