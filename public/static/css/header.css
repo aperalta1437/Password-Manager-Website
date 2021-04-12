@@ -1,0 +1,79 @@
+header {
+    background-color: #ffffff;
+    height: 12%;
+    min-height: 125px;
+    width: 100%;
+    font-family: "Comic Sans MS", "Comic Sans", cursive;
+    font-style: italic;
+}
+
+header .banner-logo {
+    width: 200px;
+    float:left; 
+    display:inline; 
+    width: 20%;
+    margin: 1% 0% 1% 2%;
+}
+
+header .banner-logo p {
+    width: 100%;
+    text-align: right;
+    padding: 0%;
+    margin: 0%;
+    margin-left: 25%;
+    color: #477e8d;
+}
+
+header #banner-logo {
+    width: 100%;
+    padding: 0%;
+    margin: 0%;
+
+}
+
+header ul {
+    float:left;
+    display:inline; 
+    padding: 0%;
+    margin: 0%;
+    margin-left: 15%;
+    width: 40%;
+}
+
+header a {
+    color: #61a2b4;
+}
+
+header a:hover {
+    color: #2a6272;
+}
+
+header li {
+    display: inline-block;
+    /* You can also add some margins here to make it look prettier */
+    zoom:1;
+    *display:inline;
+    /* this fix is needed for IE7- */
+    margin: 1%;
+}
+
+header button {
+    font-size: 14pt;
+    font-weight: bold;
+    float: right;
+    width: 10%;
+    height: 30%;
+    margin: 3% 2% 5% 0%;
+    border-radius: 7px;
+
+    /* background styles */
+    position: relative;
+	display: inline-block;
+	background-color: #72b7ca; /*for compatibility with older browsers*/
+	background-image: linear-gradient(#72b7ca,#aae0ee);
+}
+
+header button:hover {
+    background-color: #4597ad; /*for compatibility with older browsers*/
+	background-image: linear-gradient(#49a1b9,#7bd0e6);
+}

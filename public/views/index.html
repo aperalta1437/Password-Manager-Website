@@ -4,22 +4,26 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Grizo's Password Manager</title>
-
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/global.css') }}" />
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/header.css') }}" />
     </head>
     <body>
         <header>
             <section class="banner-logo">
-                <img src="{{ url_for('static', filename='images/banner-logo.png')}}" alt="Grizo's Password Manager logo">
+                <img id='banner-logo' src="{{ url_for('static', filename='images/banner-logo.png') }}" alt="Grizo's Password Manager logo">
                 <p>Password Manager</p>
             </section>
-            <ol>
+            <ul>
                 <li><a href="index.html">Home</a></li>
                 <li><a href="about.html">About Us</a></li>
                 <li><a href="contact.html">Contact Us</a></li>
                 <li><a href="services.html">Services</a></li>
                 <li><a href="reviews.html">Reviews</a></li>
-            </ol>
+            </ul>
             <button>Log In</button>
         </header>
+        <main>
+
+        </main>
     </body>
 </html>
