@@ -1,8 +1,8 @@
-from flask import Flask, send_file
+from flask import Flask, send_file, render_template
 
  
-app=Flask(__name__, static_folder='/public')
+app=Flask(__name__, static_folder='../public/static/', template_folder='../public/views/')
 app.config["DEBUG"]= True
 @app.route('/', methods=['GET'])
 def index():
-        return("./public/veiws/index.html")
+        return render_template('index.html')
