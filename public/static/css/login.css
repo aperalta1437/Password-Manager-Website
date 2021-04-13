@@ -22,21 +22,27 @@ h1 {
     font-family: 'Saira Semi Condensed', sans-serif
 }
 
-.login-form {
-    height: 100%;
+.log-in-form {
+    height: 300px;
     width: 100%;
     display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 25% 25% 25 25%;
 }
 
 label {
     color: #26525e;
     font-size: 18pt;
+    margin: auto;
+    padding: 50% auto;
 }
 
 input {
     border-radius: 15px;
     font-size: 15pt;
-    height: 30px;
+    height: 35px;
+    padding: auto 25px;
+    margin: auto;
 }
 
 .section-login-form button {
@@ -64,40 +70,53 @@ input:focus {
 #lbl-username {
     grid-column: 1;
     grid-row: 1;
-    margin: 5%;
 }
 
 #lbl-password {
     grid-column: 1;
     grid-row: 2;
-    margin: 5%;
 }
 
 #txtbox-username {
     grid-column: 2;
     grid-row: 1;
-    margin: 5%;
     width: 80%;
 }
 
 #txtbox-password {
     grid-column: 2;
     grid-row: 2;
-    margin: 5%;
     width: 80%;
+}
+
+#div-remember-me {
+    grid-column: 2;
+    grid-row: 3;
+    display: grid;
+    grid-template-columns: 30% 70%;
+}
+
+#ckbox-remember-me {
+    grid-column: 1;
+    grid-row: 1;
+    width: 100%;
+}
+
+#lbl-remember-me {
+    grid-column: 2;
+    grid-row: 1;
+    margin-left: 0%;
+    font-style: normal;
 }
 
 #btn-clear {
     grid-column: 1;
-    grid-row: 3;
-    margin: 5%;
-    margin-left: 25px;
-    margin-top: 35px;
+    grid-row: 4;
+    margin: auto;
 }
 
-#btn-sign-in {
+#btn-log-in {
     grid-column: 2;
-    grid-row: 3;
-    margin-left: 35px;
-    margin-top: 35px;
+    grid-row: 4;
+    margin: auto;
 }

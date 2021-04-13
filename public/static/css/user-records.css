@@ -1,0 +1,43 @@
+#records-link {
+    color: black;
+}
+
+header button {
+    margin: 1% 0%;
+}
+
+.btn-dropdown-menu {
+    cursor: pointer;
+    width: 100%;
+}
+
+.dropdown {
+    float: right;
+    margin: 3% 2% 2% 0%;
+    display: inline-block;
+    width: 15%;
+    padding: 0%;
+}
+
+.dropdown-content {
+    position: relative;
+    background-color: black;
+    width: 100%;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    display: none;
+    padding: 0%;
+}
+
+.dropdown-content button {
+    color: black;
+    display: block;
+    width: 100%;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropbtn {
+    background-color: #3e8e41;
+}
