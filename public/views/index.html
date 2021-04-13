@@ -6,6 +6,12 @@
         <title>Grizo's Password Manager</title>
         <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/global.css') }}" />
         <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/header.css') }}" />
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/index.css') }}" />
+        <script type="text/javascript">
+            document.getElementById("btn-login").onclick = function () {
+                location.href = "login.html";
+            };
+        </script>
     </head>
     <body>
         <header>
@@ -20,10 +26,29 @@
                 <li><a href="services.html">Services</a></li>
                 <li><a href="reviews.html">Reviews</a></li>
             </ul>
-            <button>Log In</button>
+            <form action="login.html">
+                <button type="submit" id="btn-login">Log In</button>
+            </form>
         </header>
-        <main>
-
+        <main class="main-content-grid">
+            <section class="main-left-column">
+                <img id="img-shield-symbol" src="{{ url_for('static', filename='images/main-page-shield.png') }}" alt="Main page password shield symbol.">
+            </section>
+            <section class="main-right-column">
+                <section class="main-marketing-message">
+                    <p>Get the Protection You&nbsp;DESERVE<br>by Signing In NOW!</p>
+                </section>
+                <section class="section-sign-in-form">
+                    <form action="" class="sign-in-form">
+                        <label for="txtbox-username" id="lbl-username">Master Username</label>
+                        <input type="text" name="master-username" id="txtbox-username">
+                        <label for="txtbox-password" id="lbl-password">Master Password</label>
+                        <input type="password" name="master-password" id="txtbox-password">
+                        <button type="reset" id="btn-clear">Clear</button>
+                        <button type="submit" id="btn-sign-in">Sign In</button>
+                    </form>
+                </section>
+            </section>
         </main>
     </body>
 </html>

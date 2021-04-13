@@ -6,3 +6,7 @@ app.config["DEBUG"]= True
 @app.route('/', methods=['GET'])
 def index():
         return render_template('index.html')
+
+@app.route('/login.html', methods=['GET'])
+def login():
+        return render_template('login.html')

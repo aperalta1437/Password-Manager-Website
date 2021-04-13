@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Grizo's Password Manager</title>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/global.css') }}" />
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/header.css') }}" />
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/index.css') }}" />
+    </head>
+    <body>
+        <header>
+            <section class="banner-logo">
+                <img id='banner-logo' src="{{ url_for('static', filename='images/banner-logo.png') }}" alt="Grizo's Password Manager logo">
+                <p>Password Manager</p>
+            </section>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="reviews.html">Reviews</a></li>
+            </ul>
+            <form action="login.html">
+                <button type="submit" id="btn-login">Log In</button>
+            </form>
+        </header>
+        <section class="main-sign-in-form">
+            <form action="">
+                <label for="txtbox-username" id="lbl-username">Master Username</label>
+                <input type="text" name="master-username" id="txtbox-username">
+                <label for="txtbox-password" id="lbl-password">Master Password</label>
+                <input type="password" name="master-password" id="txtbox-password">
+                <button id="btn-clear">Clear</button>
+                <button id="btn-sign-in">Sign In</button>
+            </form>
+        </section>
+    </body>
+</html>
