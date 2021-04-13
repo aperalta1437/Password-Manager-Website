@@ -1,0 +1,103 @@
+.section-login-form {
+    grid-row: 2;
+    background-color: white;
+    margin: 0% 12% 5% 0%;
+    border-radius: 35px;
+    height: auto;
+    width: 50%;
+    margin: 150px auto 50px auto;
+    padding: 1px 5% 5% 5%;
+    font-family: "Comic Sans MS", "Comic Sans", cursive;
+    font-style: italic;
+    border: solid 10px rgba(white, .2);
+    box-shadow: 0px 0px 20px 10px rgb(235, 232, 232);
+}
+
+h1 {
+    margin-left: 5%;
+    font-weight: bold;
+    font-style: normal;
+    letter-spacing: 5px;
+    font-size: 48pt;
+    font-family: 'Saira Semi Condensed', sans-serif
+}
+
+.login-form {
+    height: 100%;
+    width: 100%;
+    display: grid;
+}
+
+label {
+    color: #26525e;
+    font-size: 18pt;
+}
+
+input {
+    border-radius: 15px;
+    font-size: 15pt;
+    height: 30px;
+}
+
+.section-login-form button {
+    width: 200px;
+    font-size: 18pt;
+    margin-bottom: 0%;
+    border-radius: 10px;
+    height: 45px;
+    /* background styles */
+    position: relative;
+	display: inline-block;
+	background-color: #72b7ca; /*for compatibility with older browsers*/
+	background-image: linear-gradient(#72b7ca,#aae0ee);
+}
+
+.section-login-form button:hover {
+    background-color: #4597ad; /*for compatibility with older browsers*/
+	background-image: linear-gradient(#49a1b9,#7bd0e6);
+}
+
+input:focus {
+    outline: none;
+}
+
+#lbl-username {
+    grid-column: 1;
+    grid-row: 1;
+    margin: 5%;
+}
+
+#lbl-password {
+    grid-column: 1;
+    grid-row: 2;
+    margin: 5%;
+}
+
+#txtbox-username {
+    grid-column: 2;
+    grid-row: 1;
+    margin: 5%;
+    width: 80%;
+}
+
+#txtbox-password {
+    grid-column: 2;
+    grid-row: 2;
+    margin: 5%;
+    width: 80%;
+}
+
+#btn-clear {
+    grid-column: 1;
+    grid-row: 3;
+    margin: 5%;
+    margin-left: 25px;
+    margin-top: 35px;
+}
+
+#btn-sign-in {
+    grid-column: 2;
+    grid-row: 3;
+    margin-left: 35px;
+    margin-top: 35px;
+}
