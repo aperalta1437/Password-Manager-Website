@@ -10,7 +10,7 @@
     font-family: "Comic Sans MS", "Comic Sans", cursive;
     font-style: italic;
     border: solid 10px rgba(white, .2);
-    box-shadow: 0px 0px 20px 10px rgb(235, 232, 232);
+    box-shadow: 0px 0px 15px black
 }
 
 h1 {
@@ -19,6 +19,7 @@ h1 {
     font-style: normal;
     letter-spacing: 5px;
     font-size: 48pt;
+    color: #4ea9c2;
     font-family: 'Saira Semi Condensed', sans-serif
 }
 

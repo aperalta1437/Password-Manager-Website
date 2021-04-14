@@ -8,6 +8,7 @@ header {
     width: 100%;
     font-family: "Comic Sans MS", "Comic Sans", cursive;
     font-style: italic;
+    box-shadow: 0 10px 15px -10px black
 }
 
 header .banner-logo {
