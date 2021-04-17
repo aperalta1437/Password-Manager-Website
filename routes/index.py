@@ -5,9 +5,9 @@ import os
 import sys
 sys.path.append("./indexHelperFunctions")
 
-import createAccountHelper
-import indexHelperFunctions.createAccountHelper
-
+# import createAccountHelper
+# import indexHelperFunctions.createAccountHelper
+from indexHelperFunctions.createAccountHelper import create_account_helper_funtion
 app=Flask(__name__, static_folder='/public')
 app.config["DEBUG"]= True
 
@@ -27,7 +27,7 @@ def createAccount():
                 100000,
                 dklen=128
         )
-        createAccountResult=createAccount(userName,hashedPassword,salt)
+        createAccountResult=create_account_helper_funtion(userName,hashedPassword,salt)
         if createAccountResult.Success == True:
                 #generate token
                 #return createAccountResult+{"accesstoken":token}
