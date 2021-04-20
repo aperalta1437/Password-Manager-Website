@@ -9,10 +9,15 @@ sys.path.append("./indexHelperFunctions")
 # import indexHelperFunctions.createAccountHelper
 from indexHelperFunctions.createAccountHelper import create_account_helper_funtion
 app=Flask(__name__, static_folder='/public')
+from flask import Flask, send_file, render_template
+
+ 
+app=Flask(__name__, static_folder='../public/static/', template_folder='../public/views/')
 app.config["DEBUG"]= True
 
 
 @app.route('/', methods=['GET'])
+@app.route('/index/', methods=['GET'])
 def index():
         return("./public/veiws/index.html")
 

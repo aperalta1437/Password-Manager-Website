@@ -1,0 +1,56 @@
+#records-link {
+    color: black;
+}
+
+main {
+    width: 90%;
+    height: 100%;
+    margin: 50px auto 50px auto;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0px 0px 5px black;
+    border-style: none;
+}
+
+h1 {
+    margin: 5% 5% 0% 5%;
+    font-weight: bold;
+    font-style: normal;
+    letter-spacing: 5px;
+    font-size: 48pt;
+    color: #4ea9c2;
+    font-family: 'Saira Semi Condensed', sans-serif
+}
+
+form {
+    /* border: red 1px solid; */
+    font-family: "Comic Sans MS", "Comic Sans", cursive;
+}
+
+form input#txt-search-bar {
+    height: 35px;
+    width: 25%;
+    border-radius: 25px;
+    font-size: 12pt;
+    height: 35px;
+    padding: 0px 35px 0px 15px;
+    margin: 1%;
+}
+
+input:focus {
+    outline: none;
+}
+
+form label {
+    height: 35px;
+    font-size: 20pt;
+    margin: 5% 1% 0% 5%;
+    color: #2892af;
+}
+
+#img-search-icon {
+    width: 32px;
+    position: relative;
+    left: -56px;
+    top: 12px;;
+}

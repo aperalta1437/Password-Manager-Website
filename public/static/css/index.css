@@ -1,0 +1,126 @@
+@import url('https://fonts.googleapis.com/css2?family=Saira+Semi+Condensed:wght@300&display=swap');
+
+#home-link {
+    color: black;
+}
+
+main {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 45% 55%;
+}
+
+.main-left-column {
+    grid-column: 1;
+    margin: 3% 2% 3% 2%;
+}
+
+#img-shield-symbol {
+    width: 80%;
+    margin: 20% 15% 20% 10%;
+}
+
+.main-right-column {
+    grid-column: 2;
+    column-width: 60%;
+}
+
+.main-marketing-message {
+    grid-row: 1;
+    margin: 5% 10% 0% 5%;
+    font-size: 28pt;
+    font-weight: bold;
+    font-family: 'Saira Semi Condensed', sans-serif;
+}
+
+.section-sign-in-form {
+    grid-row: 2;
+    background-color: white;
+    margin: 0% 12% 5% 0%;
+    border-radius: 35px;
+    height: auto;
+    padding: 5%;
+    font-family: "Comic Sans MS", "Comic Sans", cursive;
+    font-style: italic;
+    border: solid 10px rgba(white, .2);
+    box-shadow: 0px 0px 15px black;
+}
+
+.sign-in-form {
+    height: 100%;
+    width: 100%;
+    display: grid;
+}
+
+label {
+    color: #26525e;
+    font-size: 18pt;
+}
+
+input {
+    border-radius: 15px;
+    font-size: 15pt;
+    height: 30px;
+}
+
+.section-sign-in-form button {
+    width: 200px;
+    font-size: 18pt;
+    margin-bottom: 0%;
+    border-radius: 10px;
+    height: 45px;
+    /* background styles */
+    position: relative;
+	display: inline-block;
+	background-color: #72b7ca; /*for compatibility with older browsers*/
+	background-image: linear-gradient(#72b7ca,#aae0ee);
+}
+
+.section-sign-in-form button:hover {
+    background-color: #4597ad; /*for compatibility with older browsers*/
+	background-image: linear-gradient(#49a1b9,#7bd0e6);
+}
+
+input:focus {
+    outline: none;
+}
+
+#lbl-username {
+    grid-column: 1;
+    grid-row: 1;
+    margin: 5%;
+}
+
+#lbl-password {
+    grid-column: 1;
+    grid-row: 2;
+    margin: 5%;
+}
+
+#txtbox-username {
+    grid-column: 2;
+    grid-row: 1;
+    margin: 5%;
+}
+
+#txtbox-password {
+    grid-column: 2;
+    grid-row: 2;
+    margin: 5%;
+}
+
+#btn-clear {
+    grid-column: 1;
+    grid-row: 3;
+    margin: 5%;
+    margin-left: 25px;
+    margin-top: 35px;
+}
+
+#btn-sign-in {
+    grid-column: 2;
+    grid-row: 3;
+    margin-left: 35px;
+    margin-top: 35px;
+}
