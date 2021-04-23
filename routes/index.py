@@ -16,6 +16,7 @@ from flask import Flask, send_file, render_template
 app=Flask(__name__, static_folder='../public/static/', template_folder='../public/views/')
 app.config["DEBUG"]= True
 app.config['SECRET_KEY']= '2jfdi3nfgiu4nsi343'
+app.config['SQLALCHEMY_DATABASE_URI']='sqlite:///'
 
 
 
@@ -36,7 +37,7 @@ def createAccount():
                 dklen=128
         )
         try:
-                createAccountResult=create_account_helper_funtion(userName,hashedPassword,salt)       
+                create_account_helper_funtion(userName,hashedPassword,salt)       
                 token = jwt.encode({
                         'user':request.body['username']
                 },
