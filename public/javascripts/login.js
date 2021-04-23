@@ -1,8 +1,8 @@
 function login(event) {
     event.preventDefault();
     const userData = {
-      userName: document.getElementById("usernameInput").value,
-      password: document.getElementById("passwordInput").value,
+      userName: document.getElementById("txtbox-username").value,
+      password: document.getElementById("txtbox-password").value,
     }
 fetch('/login', {
     method: 'POST', // *GET, POST, PUT, DELETE, etc.
@@ -15,7 +15,7 @@ fetch('/login', {
       console.log(data)
       if (data.Success) {
         window.sessionStorage.accessToken = data.accessToken
-        window.location.href = '/'
+        window.location.href = '/user-records'
         alert('Successfully Logged In')
       }
       if (!data.Success) {
@@ -24,3 +24,4 @@ fetch('/login', {
     })
 
 }
+document.getElementById('btn-log-in').addEventListener("click", login);

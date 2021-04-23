@@ -3,8 +3,8 @@ function createAccount(event) {
     event.preventDefault();  
 
     const userData = {        
-        email: document.getElementById("inputEmail").value,        
-        password: document.getElementById("inputPassword3").value,       
+        email: document.getElementById("txtbox-username").value,        
+        password: document.getElementById("txtbox-password").value,       
     }
     console.log(userData);
     if (userData.password != userData.retypePassword) { alert("The passwords do not match!") }
@@ -20,7 +20,7 @@ function createAccount(event) {
                 console.log(data.err)
                 if (data.Success) {
                     window.sessionStorage.accessToken = data.accessToken
-                    window.location.href = '/'
+                    window.location.href = '/user-records'
                     alert('Create Account Successful')
                 }
                 if (!data.Success) {
@@ -29,3 +29,4 @@ function createAccount(event) {
             })
     }
 }
+document.getElementById('btn-sign-in').addEventListener("click", login);
