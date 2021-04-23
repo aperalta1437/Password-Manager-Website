@@ -21,7 +21,7 @@ def login():
         userName=request.form.get('userName')
         password=request.form.get('password')       
         try:
-            loginResult=loginHelper(userName,password)       
+            loginHelper(userName,password)       
             token = jwt.encode({
                     'user':request.body['username']
                     },
