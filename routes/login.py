@@ -10,6 +10,7 @@ import loginHelperFunctions.loginHelper
 
 app=Flask(__name__, static_folder='/public')
 app.config["DEBUG"]= True
+app.config['SECRET_KEY']= '2jfdi3nfgiu4nsi343'
 
 @app.route('/', methods=['GET'])
 def index():
@@ -18,14 +19,16 @@ def index():
 @app.route('/login',methods=['GET'])
 def login():
         userName=request.form.get('userName')
-        password=request.form.get('password')        
-        loginResult=login(userName,password)
-        if loginResult.Success == True:
-            #generate token
-            #return createAccountResult+{"accesstoken":token}
-            return True
-        else:
-            return False
+        password=request.form.get('password')       
+        try:
+            loginResult=loginHelper(userName,password)       
+            token = jwt.encode({
+                    'user':request.body['username']
+                    },
+            app.config['SECRET_KEY'])
+            return jsonify({'Success': True, 'token': token.decode('utf-8')})
+        except:
+            return jsonify({'Success': False, 'Message':'Could not create account'})
 
 if __name__ == "__main__":
     app.run(port=5002)

@@ -1,4 +1,5 @@
 from flask import Flask, send_file, request
+from flask_sqlalchemy import SQLAlchemy
 import hashlib
 import os
 #import helper functions
@@ -14,6 +15,8 @@ from flask import Flask, send_file, render_template
  
 app=Flask(__name__, static_folder='../public/static/', template_folder='../public/views/')
 app.config["DEBUG"]= True
+app.config['SECRET_KEY']= '2jfdi3nfgiu4nsi343'
+
 
 
 @app.route('/', methods=['GET'])
@@ -32,13 +35,15 @@ def createAccount():
                 100000,
                 dklen=128
         )
-        createAccountResult=create_account_helper_funtion(userName,hashedPassword,salt)
-        if createAccountResult.Success == True:
-                #generate token
-                #return createAccountResult+{"accesstoken":token}
-                return True
-        else:
-                return False
+        try:
+                createAccountResult=create_account_helper_funtion(userName,hashedPassword,salt)       
+                token = jwt.encode({
+                        'user':request.body['username']
+                },
+                app.config['SECRET_KEY'])
+                return jsonify({'Success': True, 'token': token.decode('utf-8')})
+        except:
+                return json({'Success': False, 'Message':'Could not create account'})
 
 if __name__ == "__main__":
     app.run(port=5001)
