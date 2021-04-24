@@ -23,7 +23,7 @@ app.config['SQLALCHEMY_DATABASE_URI']='sqlite:///'
 @app.route('/', methods=['GET'])
 @app.route('/index/', methods=['GET'])
 def index():
-        return("./public/veiws/index.html")
+        return render_template('index.html')
 
 @app.route('/createAccount',methods=['POST'])
 def createAccount():
@@ -45,6 +45,12 @@ def createAccount():
                 return jsonify({'Success': True, 'token': token.decode('utf-8')})
         except:
                 return json({'Success': False, 'Message':'Could not create account'})
+
+
+@app.route('/login/', methods=['GET'])
+def login():
+        return render_template('login.html') 
+        
 
 if __name__ == "__main__":
     app.run(port=5001)

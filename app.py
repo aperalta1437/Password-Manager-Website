@@ -8,8 +8,8 @@ main_page_port = 5000
 
 @app.route('/', methods=['GET'])
 def index():
-        res= requests.get("localhost:somePort/")
-        return send_file(res.text)
+        res = requests.get("localhost:" + str(main_page_port))
+        return send_file(res.text) 
 
 @app.route('/createAccount', methods=['POST'])
 def createAccount():
