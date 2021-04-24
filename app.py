@@ -8,5 +8,25 @@ main_page_port = 5000
 
 @app.route('/', methods=['GET'])
 def index():
-        res = requests.get("localhost:" + str(main_page_port))
+        res= requests.get("localhost:somePort/")
         return send_file(res.text)
+
+@app.route('/createAccount', methods=['POST'])
+def createAccount():
+        res= requests.get("localhost:somePort/createAccount")
+        return (res)
+
+#error handling
+#error requesting a nonexistant page
+@app.errorhandler(404)
+def page_not_found(e):
+    return "exception", 404
+
+#error for general exception
+@app.errorhandler(Exception)
+def server_error(err):    
+    return "exception", 500
+
+#Run app on port 5000
+if __name__ == "__main__":
+    app.run(port=5000)
