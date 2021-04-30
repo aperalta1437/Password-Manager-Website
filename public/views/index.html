@@ -8,7 +8,15 @@
         <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/header.css') }}" />
         <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/index.css') }}" />
         <script type="text/javascript" src="{{ url_for('static', filename='js/index.js') }}" defer></script>
+        <script src="../static/js/index.js"></script>
     </head>
+    <script>
+        window.onload= (function() {
+            document.getElementById('btn-sign-in').addEventListener("click", createAccount);
+        })
+
+        
+    </script>
     <body>
         <header>
             <section class="banner-logo">
@@ -41,7 +49,7 @@
                         <label for="txtbox-password" id="lbl-password">Master Password</label>
                         <input type="password" name="master-password" id="txtbox-password">
                         <button type="reset" id="btn-clear">Clear</button>
-                        <button type="submit" id="btn-sign-in">Sign In</button>
+                        <button type="submit" id="btn-sign-in">Sign Up</button>
                     </form>
                 </section>
             </section>

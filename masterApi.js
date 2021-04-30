@@ -7,10 +7,12 @@ const utf8 = require('utf8')
 const path = require('path')
 const jsonWebToken = require('jsonwebtoken')
 const bodyParser = require('body-parser')
+require('dotenv').config()
 
 
 //import routes
 const createAccount= require('./routes/createAccountHelper.js')
+const createA= require('./routes/cAH.js')
 
 //import Models
 const Customer = require('./models/Customer-Model.js')
@@ -24,16 +26,33 @@ app.use('/stylesheets', express.static(path.join(__dirname, 'public/stylesheets'
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }))
 
+//Middleware
+function authenticateToken(req, res, next) {
+    const authHeader = req.headers['authorization']
+    const token = authHeader && authHeader.split(' ')[1]
+    if (token == null) return res.sendStatus(401)
+    jsonWebToken.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, user) => {
+        if (err) return res.send({ Success: false, err })
+        req.user = user
+        next()
+    })
+
+}
+
+//GETs for App
 app.get('/', function (req, res) {
     res.sendFile(path.join(__dirname, './public/views/index.html'))
 });
 
 app.post('/createAccount', function(req,res){
-createAccount(req)
+createA(req)
 .then(()=>{
-    res.send({Success:true})
+    console.log(req.body.username)
+    const token = jsonWebToken.sign(req.body.username, process.env.ACCESS_TOKEN_SECRET)
+    res.send({Success:true, accessToken: token})
 })
 .catch(err=>{
+    console.log(err)
     res.send({Success:false, Message:err})
 })
 })
