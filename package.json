@@ -1,0 +1,32 @@
+{
+  "name": "psu-team2-ist402",
+  "version": "1.0.0",
+  "description": "",
+  "main": "accountApi.js",
+  "scripts": {
+    "startMaster": "nodemon masterApi.js",
+    "startLogin": "nodemon loginApi.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aperalta1437/PSU-TEAM2-IST402.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aperalta1437/PSU-TEAM2-IST402/issues"
+  },
+  "homepage": "https://github.com/aperalta1437/PSU-TEAM2-IST402#readme",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongo": "^0.1.0",
+    "mongodb": "^3.6.6",
+    "mongoose": "^5.12.6",
+    "nodemon": "^2.0.7",
+    "path": "^0.12.7",
+    "utf8": "^3.0.0"
+  }
+}
