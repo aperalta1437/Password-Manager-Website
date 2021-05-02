@@ -9,10 +9,11 @@ module.exports = function (username, userData) {
     MongoClient.connect(mongodbUrl, { useUnifiedTopology: true }, function (err, db) {
       let dbo = db.db("311DB");
       let query = { "username": username };
-      let newvalues = { $push: { "userData": userData } };
+      let newvalues = { $push: { "userData": {url:userData.url, username:userData.username, password:userData.password} } };
       dbo.collection("customers").updateOne(query, newvalues)
         .then(function (result) {
-          if (result === null) {            
+          if (result === null) {  
+              console.log(result)          
             reject("There was an error");
           }
           else {

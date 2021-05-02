@@ -24,10 +24,12 @@ app.use(express.urlencoded({ extended: true }))
 app.get('/records', function (req, res) {
     res.sendFile(path.join(__dirname, './public/views/user-records.html'))
 });
- const username="a";
+
 app.post('/getRecords', function(req,res){
-    getUserData(username,req)
+    console.log(req.body)
+    getUserData(req.body.username,req)
     .then((result)=>{
+        console.log(result)
         res.send(result)
     })
     .catch(err=>{
@@ -35,9 +37,10 @@ app.post('/getRecords', function(req,res){
         res.send({Success:false, Message:err})
     })
     })
+
 //POSTs
     app.post('/postRecords', function(req,res){
-        postUserData(username,req.body)
+        postUserData(req.body.masterUsername,req.body)
         .then(()=>{
            res.send({Success:true})
         })

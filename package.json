@@ -4,9 +4,9 @@
   "description": "",
   "main": "accountApi.js",
   "scripts": {
-    "startMaster": "nodemon masterApi.js",
-    "startLogin": "nodemon loginApi.js",
-    "startRecord": "nodemon userApi.js"
+    "master": "nodemon masterApi.js",
+    "login": "nodemon loginApi.js",
+    "record": "nodemon userApi.js"
   },
   "repository": {
     "type": "git",

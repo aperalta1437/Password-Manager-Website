@@ -1,6 +1,3 @@
-document.getElementById("btn-login").onclick = function () {
-    location.href = "/login";
-};
 
 function createAccount(event) {      
 
@@ -20,8 +17,10 @@ function createAccount(event) {
             .then(data => {
                 console.log(data)
                 if (data.Success) {
-                    window.sessionStorage.accessToken = data.accessToken
+                    window.localStorage.accessToken = data.accessToken
                     alert('Create Account Successful')
+                    window.location = '/userRecords'
+
                 }
                 if (!data.Success) {
                     alert('Register Failed')

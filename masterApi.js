@@ -10,7 +10,7 @@ const bodyParser = require('body-parser')
 require('dotenv').config()
 const http = require('http');
 const RP = require('request-promise');
-
+var authToken='eyJhbGciOiJIUzI1NiJ9.YQ.ykxEKSo956c2GxBL9vYB3kaobxPMmz-VLgCMkJkBDWY';
 //import routes
 const createAccount = require('./routes/createAccountHelper.js')
 const createA = require('./routes/cAH.js')
@@ -27,13 +27,48 @@ app.use('/stylesheets', express.static(path.join(__dirname, 'public/stylesheets'
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }))
 
+//http requests
+const loginOptionsGet = {
+    hostname: 'localhost',
+    port: 8081,
+    path: '/login',
+    method: 'GET'
+}
+const loginOptionsPost = {
+    hostname: 'localhost',
+    port: 8081,
+    path: '/login',
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json'
+    }
+}
+
+const recordsOptionsPost = {
+    hostname: 'localhost',
+    port: 8082,
+    path: '/getRecords',
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json'
+    }
+}
+
+const recordsOptionsGet = {
+    hostname: 'localhost',
+    port: 8082,
+    path: '/records',
+    method: 'GET'
+}
+
 //Middleware
-function authenticateToken(req, res, next) {
+function authenticateToken(req, res, next) {    
     const authHeader = req.headers['authorization']
     const token = authHeader && authHeader.split(' ')[1]
     if (token == null) return res.sendStatus(401)
     jsonWebToken.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, user) => {
-        if (err) return res.send({ Success: false, err })
+        
+        if (err) return res.send({ Success: false, err })        
         req.user = user
         next()
     })
@@ -42,32 +77,110 @@ function authenticateToken(req, res, next) {
 
 //GETs for App
 app.get('/', function (req, res) {
-
     res.sendFile(path.join(__dirname, './public/views/index.html'))
 });
 
 app.get('/login', function (req, res) {
-    RP({uri:'http://localhost:8081/login',
-        method: 'GET'
-    }).then((response)=>{
-        res.sendStatus(200).send(response)
+    console.log('here')
+    const serverReq = http.request(loginOptionsGet, serverRes => {
+        console.log(`statusCode: ${serverRes.statusCode}`)
+        res.setHeader(
+            'Content-Type', 'text/html'            
+        )
+        
+        serverRes.on('data', d => {
+            res.send(d)
+
+        })
     })
-    .catch((err)=>{
-        return res.status(500).send(err.message)
+
+    serverReq.on('error', error => {
+        console.log(error)
+        // res.sendStatus(500)
     })
+
+    serverReq.end()
 });
 
-app.post('/createAccount', function (req, res) {
+app.get('/userRecords', function (req, res) {
+    const serverReq = http.request(recordsOptionsGet, serverRes => {
+        console.log(`statusCode: ${serverRes.statusCode}`)
+        res.setHeader(
+            'Content-Type', 'text/html'
+        )
+        res.setHeader(
+            'Authorization', 'Bearer ' + authToken
+        )
+        serverRes.on('data', d => {
+            res.send(d)
+        })
+    })
+
+    serverReq.on('error', error => {
+        console.error(error)
+    })
+
+    serverReq.end()
+});
+
+app.get('/token', function (req,res){
+    res.send({authToken:authToken})
+})
+app.post('/login', function (req, res) {
+    const serverReq = http.request(loginOptionsPost, serverRes => {
+        console.log(`statusCode: ${serverRes.statusCode}`)
+        res.setHeader(
+            'Content-Type', 'application/json'
+        )
+        serverRes.on('data', d => {
+            const token = jsonWebToken.sign(req.body.username, process.env.ACCESS_TOKEN_SECRET)
+            accessToken=token;
+            authToken=token;
+            res.send({ Success: true, accessToken: token })
+
+        })
+    })
+
+    serverReq.on('error', error => {
+        console.error(error)
+    })
+    serverReq.write(JSON.stringify(req.body))
+    serverReq.end()
+})
+
+app.post('/createAccount', function (req, res) {    
     createA(req)
         .then(() => {
             console.log(req.body.username)
             const token = jsonWebToken.sign(req.body.username, process.env.ACCESS_TOKEN_SECRET)
+            authToken=token;
             res.send({ Success: true, accessToken: token })
         })
         .catch(err => {
             console.log(err)
             res.send({ Success: false, Message: err })
         })
+})
+
+app.post('/getRecords', authenticateToken, (req,res)=>{
+    const serverReq = http.request(recordsOptionsPost, serverRes => {
+        console.log(`statusCode: ${serverRes.statusCode}`)
+        res.setHeader(
+            'Content-Type', 'application/json'
+        )
+        serverRes.on('data', d => { 
+            console.log(d)          
+            res.send(d)
+
+        })
+    })
+    username={username:req.user}
+    serverReq.on('error', error => {
+        console.error(error)
+    })
+    console.log(req.body)
+    serverReq.write(JSON.stringify(username))
+    serverReq.end()
 })
 
 //connectation to database
@@ -106,5 +219,4 @@ app.listen(8080, () => {
 });
 
 
-//GETs
 
