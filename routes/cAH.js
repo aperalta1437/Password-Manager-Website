@@ -8,7 +8,7 @@ module.exports = function (customer) {
         MongoClient.connect(mongodbUrl, { useUnifiedTopology: true }, function (err, db) {
             let dbo = db.db("331DB");
             let hashedPassword = bcrypt.hashSync(customer.body.password, 10);
-            let values = { username: customer.body.username, hashedPassword: hashedPassword, customerData:''} 
+            let values = { username: customer.body.username, hashedPassword: hashedPassword, customerData:[]} 
             dbo.collection("customers").insertOne(values)
                 .then(function (result) {
                     if (result === null) {

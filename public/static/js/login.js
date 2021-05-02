@@ -1,10 +1,10 @@
-document.getElementById("btn-sign-in").onclick = function () {
-    location.href = "/";
-};
-document.getElementById('txtbox-username').addEventListener('scroll', function(e){
-    document.getElementById('txtbox-username').scrollLeft=0;
-    console.log('Prevented scrolling');
-});
+// document.getElementById("btn-sign-in").onclick = function () {
+//     location.href = "/";
+// };
+// document.getElementById('txtbox-username').addEventListener('scroll', function(e){
+//     document.getElementById('txtbox-username').scrollLeft=0;
+//     console.log('Prevented scrolling');
+// });
 
 function login(event) {
     event.preventDefault();
@@ -23,7 +23,7 @@ fetch('/login', {
       console.log(data)
       if (data.Success) {
         window.sessionStorage.accessToken = data.accessToken
-        // window.location.href = '/user-records'
+        window.location.href = '/userRecords'
         alert('Successfully Logged In')
       }
       if (!data.Success) {

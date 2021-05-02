@@ -3,16 +3,22 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Grizo's Password Manager</title>
-        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/global.css') }}" />
-        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/header.css') }}" />
-        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/index.css') }}" />
-        <script type="text/javascript" src="{{ url_for('static', filename='js/index.js') }}" defer></script>
+        <title>Grizo's Password Manager</title>        
+        <link rel="stylesheet" href="../static/css/index.css">
+        <link rel="stylesheet" href="../static/css/global.css">
+        <link rel="stylesheet" href="../static/css/header.css">
+
+
         <script src="../static/js/index.js"></script>
+        
+
     </head>
     <script>
         window.onload= (function() {
             document.getElementById('btn-sign-in').addEventListener("click", createAccount);
+            document.getElementById("btn-login").addEventListener("click",function(){
+                window.location.href='/login'
+            })
         })
 
         
@@ -20,7 +26,7 @@
     <body>
         <header>
             <section class="banner-logo">
-                <img id='banner-logo' src="{{ url_for('static', filename='images/banner-logo.png') }}" alt="Grizo's Password Manager logo">
+                <img id='banner-logo' src="../static/images/banner-logo.png" alt="Grizo's Password Manager logo">
                 <p>Password Manager</p>
             </section>
             <ul>
@@ -31,12 +37,12 @@
                 <li><a href="/reviews/">Reviews</a></li>
             </ul>
             <form action="/login/">
-                <button type="button" id="btn-login">Log In</button>
+                <button type="button" href= 'localhost:8080/login' id="btn-login">Log In</button>
             </form>
         </header>
         <main class="main-content-grid">
             <section class="main-left-column">
-                <img id="img-shield-symbol" src="{{ url_for('static', filename='images/main-page-shield.png') }}" alt="Main page password shield symbol.">
+                <img id="img-shield-symbol" src="../static/images/main-page-shield.png" alt="Main page password shield symbol.">
             </section>
             <section class="main-right-column">
                 <section class="main-marketing-message">
