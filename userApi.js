@@ -22,11 +22,13 @@ app.use(express.urlencoded({ extended: true }))
 
 //GETs
 app.get('/records', function (req, res) {
+    console.log("records html get triggered")
     res.sendFile(path.join(__dirname, './public/views/user-records.html'))
 });
 
 app.post('/getRecords', function(req,res){
-    console.log(req.body)
+    console.log("records html get triggered")
+    console.log("username"+req.body.username)
     getUserData(req.body.username,req)
     .then((result)=>{
         console.log(result)

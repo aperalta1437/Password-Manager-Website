@@ -29,13 +29,13 @@ app.use(express.urlencoded({ extended: true }))
 
 //http requests
 const loginOptionsGet = {
-    hostname: 'localhost',
+    hostname: '::1',
     port: 8081,
     path: '/login',
     method: 'GET'
 }
 const loginOptionsPost = {
-    hostname: 'localhost',
+    hostname: '::1',
     port: 8081,
     path: '/login',
     method: 'POST',
@@ -45,7 +45,7 @@ const loginOptionsPost = {
 }
 
 const recordsOptionsPost = {
-    hostname: 'localhost',
+    hostname: '::1',
     port: 8082,
     path: '/getRecords',
     method: 'POST',
@@ -55,7 +55,7 @@ const recordsOptionsPost = {
 }
 
 const recordsOptionsGet = {
-    hostname: 'localhost',
+    hostname: '::1',
     port: 8082,
     path: '/records',
     method: 'GET'
@@ -81,7 +81,7 @@ app.get('/', function (req, res) {
 });
 
 app.get('/login', function (req, res) {
-    console.log('here')
+    console.log('login html triggered')
     const serverReq = http.request(loginOptionsGet, serverRes => {
         console.log(`statusCode: ${serverRes.statusCode}`)
         res.setHeader(
@@ -127,6 +127,8 @@ app.get('/token', function (req,res){
     res.send({authToken:authToken})
 })
 app.post('/login', function (req, res) {
+    console.log('login post triggered')
+
     const serverReq = http.request(loginOptionsPost, serverRes => {
         console.log(`statusCode: ${serverRes.statusCode}`)
         res.setHeader(
@@ -196,10 +198,10 @@ mongoose.connect(
 });
 
 //Error handling for HTTP
-app.use((req, res, next) => {
-    const err = new Error("An error occur.")
-    next(err)
-})
+// app.use((req, res, next) => {
+//     const err = new Error("An error occur.")
+//     next(err)
+// })
 
 //printing the error
 app.use((err, req, res, next) => {
