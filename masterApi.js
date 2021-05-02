@@ -8,15 +8,16 @@ const path = require('path')
 const jsonWebToken = require('jsonwebtoken')
 const bodyParser = require('body-parser')
 require('dotenv').config()
-
+const http = require('http');
+const RP = require('request-promise');
 
 //import routes
-const createAccount= require('./routes/createAccountHelper.js')
-const createA= require('./routes/cAH.js')
+const createAccount = require('./routes/createAccountHelper.js')
+const createA = require('./routes/cAH.js')
 
 //import Models
 const Customer = require('./models/Customer-Model.js')
-const CustomerData  = require('./models/ManagedData-Model.js')
+const CustomerData = require('./models/ManagedData-Model.js')
 
 //uses for app
 app.use(express.static(path.join(__dirname, 'public')));
@@ -41,20 +42,32 @@ function authenticateToken(req, res, next) {
 
 //GETs for App
 app.get('/', function (req, res) {
+
     res.sendFile(path.join(__dirname, './public/views/index.html'))
 });
 
-app.post('/createAccount', function(req,res){
-createA(req)
-.then(()=>{
-    console.log(req.body.username)
-    const token = jsonWebToken.sign(req.body.username, process.env.ACCESS_TOKEN_SECRET)
-    res.send({Success:true, accessToken: token})
-})
-.catch(err=>{
-    console.log(err)
-    res.send({Success:false, Message:err})
-})
+app.get('/login', function (req, res) {
+    RP({uri:'http://localhost:8081/login',
+        method: 'GET'
+    }).then((response)=>{
+        res.sendStatus(200).send(response)
+    })
+    .catch((err)=>{
+        return res.status(500).send(err.message)
+    })
+});
+
+app.post('/createAccount', function (req, res) {
+    createA(req)
+        .then(() => {
+            console.log(req.body.username)
+            const token = jsonWebToken.sign(req.body.username, process.env.ACCESS_TOKEN_SECRET)
+            res.send({ Success: true, accessToken: token })
+        })
+        .catch(err => {
+            console.log(err)
+            res.send({ Success: false, Message: err })
+        })
 })
 
 //connectation to database
@@ -78,7 +91,7 @@ app.use((req, res, next) => {
 //printing the error
 app.use((err, req, res, next) => {
     console.log(err)
-    res.status(err.status || 500)    
+    res.status(err.status || 500)
     res.send({
         error: {
             status: err.status || 500,

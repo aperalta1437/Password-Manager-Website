@@ -21,7 +21,7 @@ app.use(express.urlencoded({ extended: true }))
 
 //GETs
 app.get('/login', function (req, res) {
-    res.sendFile(path.join(__dirname, './public/views/login.html'))
+    res.sendFile(path.join(__dirname, './public/views/user-records.html'))
 });
 
 //POSTs
@@ -37,6 +37,18 @@ app.post('/login', function(req,res){
         res.send({Success:false, Message:err})
     })
     })
+    app.post('/retreiveRecord', function(req,res){
+        login(req.body.username,req.body.password)
+        .then(()=>{
+            console.log(req.body.username)
+            const token = jsonWebToken.sign(req.body.username, process.env.ACCESS_TOKEN_SECRET)
+            res.send({Success:true, accessToken: token})
+        })
+        .catch(err=>{
+            console.log(err)
+            res.send({Success:false, Message:err})
+        })
+        })
 
     //The port the app is running on 
 app.listen(8081, () => {

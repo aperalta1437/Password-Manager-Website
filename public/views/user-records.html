@@ -9,6 +9,11 @@
         <link rel="stylesheet" type="text/css" href="../static/css/user-records.css" />
         <script type="text/javascript" src="../static/js/user-records.js" defer></script>
     </head>
+    <script>
+        window.onload= (function(){
+            displayData();
+        })
+    </script>
     <body>
         <header>
             <section class="banner-logo">
@@ -40,7 +45,7 @@
                    <input type="image" src="../static/images/search-icon.svg" id="img-search-icon" name="submit" alt="Submit search query">
                </form>
            </section>
-           <div class="table">
+           <div class="table" id="inputTable">
                 <div class="tr">
                     <span class="th">Record ID</span>
                     <span class="th">Domain URL</span>
@@ -48,28 +53,28 @@
                     <span class="th">Password</span>
                     <span class="th">Actions</span>
                 </div>
-                <form action="" class="tr" method="POST">
+                <form action="" class="tr" method="POST"id= "userDataField">
                     <span class="td record-id"><input type="text" class="table-input"></span>
-                    <span class="td domain-url"><input type="text" class="table-input"></span>
-                    <span class="td username"><input type="text" class="table-input"></span>
-                    <span class="td password"><input type="text" class="table-input"></span>
+                    <span class="td domain-url"><input type="text" placeholder="" class="table-input"></span>
+                    <span class="td username"><input type="text" placeholder="" class="table-input"></span>
+                    <span class="td password"><input type="text" placeholder="" class="table-input"></span>
                     <div class="td">
                         <input type="image" src="../static/images/view-record-icon.svg" class="action-icon" name="submit" alt="Submit search query">
                         <input type="image" src="../static/images/edit-record-icon.svg" class="action-icon" name="submit" alt="Submit search query">
                         <input type="image" src="../static/images/delete-record-icon.svg" class="action-icon" name="submit" alt="Submit search query">
                     </div>
                 </form>
-                <form action="" class="tr" method="POST">
+                <!-- <form action="" class="tr" method="POST">
                     <span class="td record-id"><input type="text" class="table-input"></span>
-                    <span class="td"><input type="text" class="table-input"></span>
-                    <span class="td"><input type="text" class="table-input"></span>
-                    <span class="td"><input type="text" class="table-input"></span>
+                    <span class="td"><input type="text" class="table-input" id="inputURL"></span>
+                    <span class="td"><input type="text" class="table-input" id="inputUsername"></span>
+                    <span class="td"><input type="text" class="table-input" id="inputPassword"></span>
                     <div class="td">
                         <input type="image" src="../static/images/view-record-icon.svg" class="action-icon" name="submit" alt="Submit search query">
                         <input type="image" src="../static/images/edit-record-icon.svg" class="action-icon" name="submit" alt="Submit search query">
                         <input type="image" src="../static/images/delete-record-icon.svg" class="action-icon" name="submit" alt="Submit search query">
                     </div>
-                </form>
+                </form> -->
            </div>
         </main>
     </body>
