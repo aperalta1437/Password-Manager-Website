@@ -7,4 +7,4 @@ ENV NODE_PATH /install/node_modules
 WORKDIR /app
 COPY . /app/
 EXPOSE 8082
-CMD ["node","userApi.js"]
+CMD ["node","masterApi.js"]
